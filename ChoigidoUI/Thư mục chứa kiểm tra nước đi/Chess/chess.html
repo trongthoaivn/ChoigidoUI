@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <title>Chess</title>
+    <style>
+        body {
+            width: 500px;
+            height: 600px;
+            border: 1px solid black;
+        }
+        
+        .chess-area {
+            width: 500px;
+            height: 550px;
+            border: 1px solid black;
+            /* background-image: url(https://lh3.googleusercontent.com/proxy/qaQogOWMkIrZ4V3JI6izGSD_nR4K0ZlOaxkFHUY991qSPRlIKknMlkxIhZeSPpD-GXsFdr2dgWmEd3VRToT1NTsv-aLP35eWApVE2pM);
+            background-repeat: no-repeat; */
+            margin: 30px;
+        }
+        
+        .pic {
+            width: 470px;
+            height: 550px;
+            background-image: url("../unnamed.jpg");
+            background-repeat: no-repeat;
+            position: absolute;
+            margin-left: 13px;
+            margin-top: 10px;
+        }
+        
+        #drag-in {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: left;
+        }
+        
+        .Tuong {
+            border: 1px solid transparent;
+            width: 50px;
+            height: 50px;
+            top: 0;
+            z-index: 10;
+        }
+        
+        #Si {
+            border: 1px solid black;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            z-index: 10;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="chess-area">
+        <div class="pic">
+
+        </div>
+        <div id="drag-in">
+            <div class="Tuong" id="pos1"></div>
+            <div class="Tuong" id="pos2"></div>
+            <div class="Tuong" id="pos3"></div>
+            <div class="Tuong" id="pos4"></div>
+            <div class="Tuong" id="pos5"></div>
+            <div class="Tuong" id="pos6"></div>
+            <div class="Tuong" id="pos7"></div>
+            <div class="Tuong" id="pos8"></div>
+            <div class="Tuong" id="pos9"></div>
+            <div class="Tuong" id="pos10"></div>
+            <div class="Tuong" id="pos11"></div>
+            <div class="Tuong" id="pos12"></div>
+            <div class="Tuong" id="pos13"></div>
+            <div class="Tuong" id="pos14"></div>
+            <div class="Tuong" id="pos15"></div>
+            <div class="Tuong" id="pos16"></div>
+            <div class="Tuong" id="pos17"></div>
+            <div class="Tuong" id="pos18"></div>
+            <div class="Tuong" id="pos19"></div>
+            <div class="Tuong" id="pos20"></div>
+            <div class="Tuong" id="pos21"></div>
+            <div class="Tuong" id="pos22"></div>
+            <div class="Tuong" id="pos23"></div>
+            <div class="Tuong" id="pos24"></div>
+            <div class="Tuong" id="pos25"></div>
+            <div class="Tuong" id="pos26"></div>
+            <div class="Tuong" id="pos27"></div>
+            <div class="Tuong" id="pos28"></div>
+            <div class="Tuong" id="pos29"></div>
+            <div class="Tuong" id="pos30"></div>
+            <div class="Tuong" id="pos31"></div>
+            <div class="Tuong" id="pos32"></div>
+            <div class="Tuong" id="pos33"></div>
+            <div class="Tuong" id="pos34"></div>
+            <div class="Tuong" id="pos35"></div>
+            <div class="Tuong" id="pos36"></div>
+            <div class="Tuong" id="pos37"></div>
+            <div class="Tuong" id="pos38"></div>
+            <div class="Tuong" id="pos39"></div>
+            <div class="Tuong" id="pos40"></div>
+            <div class="Tuong" id="pos41"></div>
+            <div class="Tuong" id="pos42"></div>
+            <div class="Tuong" id="pos43"></div>
+            <div class="Tuong" id="pos44"></div>
+            <div class="Tuong" id="pos45"></div>
+            <div class="Tuong" id="pos46"></div>
+            <div class="Tuong" id="pos47"></div>
+            <div class="Tuong" id="pos48"></div>
+            <div class="Tuong" id="pos49"></div>
+            <div class="Tuong" id="pos50"></div>
+            <div class="Tuong" id="pos51"></div>
+            <div class="Tuong" id="pos52"></div>
+            <div class="Tuong" id="pos53"></div>
+            <div class="Tuong" id="pos54"></div>
+            <div class="Tuong" id="pos55"></div>
+            <div class="Tuong" id="pos56"></div>
+            <div class="Tuong" id="pos57"></div>
+            <div class="Tuong" id="pos58"></div>
+            <div class="Tuong" id="pos59"></div>
+            <div class="Tuong" id="pos60"></div>
+            <div class="Tuong" id="pos61"></div>
+            <div class="Tuong" id="pos62"></div>
+            <div class="Tuong" id="pos63"></div>
+            <div class="Tuong" id="pos64"></div>
+            <div class="Tuong" id="pos65"></div>
+            <div class="Tuong" id="pos66"></div>
+            <div class="Tuong" id="pos67"></div>
+            <div class="Tuong" id="pos68"></div>
+            <div class="Tuong" id="pos69"></div>
+            <div class="Tuong" id="pos70"></div>
+            <div class="Tuong" id="pos71"></div>
+            <div class="Tuong" id="pos72"></div>
+            <div class="Tuong" id="pos73"></div>
+            <div class="Tuong" id="pos74"></div>
+            <div class="Tuong" id="pos75"></div>
+            <div class="Tuong" id="pos76"></div>
+            <div class="Tuong" id="pos77"></div>
+            <div class="Tuong" id="pos78"></div>
+            <div class="Tuong" id="pos79"></div>
+            <div class="Tuong" id="pos80"></div>
+            <div class="Tuong" id="pos81"></div>
+            <div class="Tuong" id="pos82"></div>
+            <div class="Tuong" id="pos83"></div>
+            <div class="Tuong" id="pos84"></div>
+            <div class="Tuong" id="pos85"></div>
+            <div class="Tuong" id="pos86"></div>
+            <div class="Tuong" id="pos87"></div>
+            <div class="Tuong" id="pos88"></div>
+            <div class="Tuong" id="pos89"></div>
+            <div class="Tuong" id="pos90"></div>
+        </div>
+    </div>
+    <!-- Bàn cờ trên -->
+    <div class="draggable" id="co1" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="co2" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="co3" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="co4" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="co5" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="co6" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="co7" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="co8" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="co9" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="co10" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="co11" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="co12" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="co13" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="co14" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="co15" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="co16" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <!-- Bàn cờ dưới -->
+    <div class="draggable" id="tu55" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="tu57" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="tu59" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="tu61" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="tu63" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="tu65" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="tu71" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="tu82" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="tu83" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="tu84" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="tu85" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="tu86" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="tu87" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="tu88" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="tu89" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+    <div class="draggable" id="tu90" class="ui-widget-content">
+        <img width="50" src="../unnamed.png">
+    </div>
+</body>
+
+</html>
+
+<script>
+    $(document).ready(function() {
+        // for (i = 1; i < 10; i++) {
+        //     $('body').append('<div class="draggable" id="co' + i + '" class="ui-widget-content">' +
+        //         '<img width="50" src="../unnamed.png">' +
+        //         '</div>');
+        // }
+        for (j = 0; j < 10; j++) {
+            $('#co' + j).appendTo('#pos' + j);
+        }
+
+        $('#co' + 10).appendTo('#pos' + 20);
+        $('#co' + 11).appendTo('#pos' + 26);
+        $('#co' + 12).appendTo('#pos' + 28);
+        $('#co' + 13).appendTo('#pos' + 30);
+        $('#co' + 14).appendTo('#pos' + 32);
+        $('#co' + 15).appendTo('#pos' + 34);
+        $('#co' + 16).appendTo('#pos' + 36);
+
+        for (h = 82; h < 91; h++) {
+            $('#tu' + h).appendTo('#pos' + h);
+        }
+
+        $('#tu' + 55).appendTo('#pos' + 55);
+        $('#tu' + 57).appendTo('#pos' + 57);
+        $('#tu' + 59).appendTo('#pos' + 59);
+        $('#tu' + 61).appendTo('#pos' + 61);
+        $('#tu' + 63).appendTo('#pos' + 63);
+        $('#tu' + 65).appendTo('#pos' + 65);
+        $('#tu' + 71).appendTo('#pos' + 71);
+    });
+    $('.draggable').draggable({
+        appendTo: 'body',
+        zIndex: 1,
+        containment: $('.chess-area'),
+        helper: 'clone',
+        stop: function() {
+            var offset = $(this).offset();
+            var xPos = offset.left;
+            var yPos = offset.top;
+            console.log("Vị trí theo số: " + xPos + "-" + yPos);
+            console.log("--------------------------------------------");
+            // $('#posX').text('x: ' + xPos);
+            // $('#posY').text('y: ' + yPos);
+        }
+    });
+    $('#drag-in .Tuong').droppable({
+        drop: function(event, ui) {
+            ui.draggable.detach().appendTo($(this));
+            console.log("--------------------------------------------");
+            console.log("Quân cờ đang kéo: " + ui.draggable.attr("id"));
+            console.log("Vị trí thả: " + $(this).attr("id"));
+        }
+    });
+</script>
