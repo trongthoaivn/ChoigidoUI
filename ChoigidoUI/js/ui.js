@@ -46,19 +46,35 @@ function draw_pieces(Fen) {
     var Round = Arr[4];
     var turn = Arr[5];
     var Row = board.split("/");
-
+    var Fen_compile = []
     for (let i = 0; i < 8; i++) {
+        Fen_compile.push(new Array());
         for (let j = 0; j < 8; j++) {
-            if (List_pieces.find(function(e) {
-                    if (e.name == Row[i][j]) {
-                        $('#' + Number.parseInt(i+1) + '' + Number.parseInt(j+1)  + '').append('<img width = "50"src = "' + e.image + '" class ="'+e.name+'">');
-                        return true;
-                    } {
-                        return false;
-                    }
-                }));
+            var str = Row[i][j];
+            var so = Number.parseInt(str);
+            if(so != undefined){
+                for(let n=0 ;n<so;n++){
+                    Fen_compile[i].push("*");
+                }
+            }
+            if( str != undefined && Number.isNaN(Number.parseInt(str)) ){
+                Fen_compile[i].push(str);
+            }           
         };
     }
+    
+    function draw(){
+        for (let i = 0; i < 8; i++) {
+            for (let j = 0; j < 8; j++){
+                    List_pieces.forEach(element => {
+                        if(element.name ==Fen_compile[i][j]){
+                            $('#' + Number.parseInt(i+1) + '' + Number.parseInt(j+1)  + '').append('<img width = "50"src = "' + element.image + '" class ="'+element.name+'">');
+                        }
+                });
+            }
+        }
+    }
+    draw();
 }
 
 function make_board() {
@@ -107,7 +123,7 @@ function set_drag(){
             var p = new pieces();
             var position = new Position($(img).parent().attr("id")[0],$(img).parent().attr("id")[1]);
             p = get_Pieces(img);
-            get_moves(p,position);
+            console.log(get_moves(p,position));
         }
     });
 }

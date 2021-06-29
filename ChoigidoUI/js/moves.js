@@ -1,8 +1,33 @@
 
 
 function get_moves( img, position){
+
+    var accept_position = new Array();
+    var x = Number.parseInt(position.x);
+    var y = Number.parseInt(position.y);
     if(img.name == "k"){
         console.log("bk:"+position.x+position.y)
+        
+        
+        //default accept_position
+        accept_position.push(
+            new Position(x+1,y+1), 
+            new Position(x-1,y-1),
+            new Position(x-1,y+1), 
+            new Position(x+1,y-1),
+            new Position(x,y-1),
+            new Position(x,y+1),
+            new Position(x+1,y),
+            new Position(x-1,y),
+            );
+        // trigger block (0,9)
+            for (let i = 0; i < accept_position.length; i++) {
+                var pos = new position("","");
+                pos =accept_position[i];
+                if((accept_position[i].x)>0 && (accept_position[i].x)<9 && (accept_position[i].y)>0 && (accept_position[i].y)<9  ){
+                    accept_position.splice(i, 1);
+            }
+        return accept_position;
     }
     if(img.name == "q"){
         console.log("bq:"+position.x+position.y)
@@ -37,5 +62,6 @@ function get_moves( img, position){
     if(img.name == "P"){
         console.log("WP:"+position.x+position.y)
     }
-
+    }
+    
 }
