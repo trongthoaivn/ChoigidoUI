@@ -1,3 +1,21 @@
+
+
+const k = new pieces("k", "black", "/ChoigidoUI/image/black_king.svg", "");
+const q = new pieces("q", "black", "/ChoigidoUI/image/black_queen.svg", "");
+const b = new pieces("b", "black", "/ChoigidoUI/image/black_bishop.svg", "");
+const n = new pieces("n", "black", "/ChoigidoUI/image/black_knight.svg", "");
+const r = new pieces("r", "white", "/ChoigidoUI/image/black_rook.svg", "");
+const p = new pieces("p", "white", "/ChoigidoUI/image/black_pawn.svg", "");
+const K = new pieces("K", "white", "/ChoigidoUI/image/white_king.svg", "");
+const Q = new pieces("Q", "white", "/ChoigidoUI/image/white_queen.svg", "");
+const B = new pieces("B", "white", "/ChoigidoUI/image/white_bishop.svg", "");
+const N = new pieces("N", "white", "/ChoigidoUI/image/white_knight.svg", "");
+const R = new pieces("R", "white", "/ChoigidoUI/image/white_rook.svg", "");
+const P = new pieces("P", "white", "/ChoigidoUI/image/white_pawn.svg", "");
+
+const List_pieces =[k, q, b, n, r, p, K, Q, B, N, R, P]
+
+
 $(document).ready(function() {
     make_board();
    // set_drop();
@@ -33,7 +51,7 @@ function draw_pieces(Fen) {
         for (let j = 0; j < 8; j++) {
             if (List_pieces.find(function(e) {
                     if (e.name == Row[i][j]) {
-                        $('#' + i + '' + j + '').append('<img width = "50"src = "' + e.image + '" class ="'+e.name+'">');
+                        $('#' + Number.parseInt(i+1) + '' + Number.parseInt(j+1)  + '').append('<img width = "50"src = "' + e.image + '" class ="'+e.name+'">');
                         return true;
                     } {
                         return false;
@@ -49,10 +67,10 @@ function make_board() {
     var tbody = document.createElement("tbody");
     var tr = document.createElement("tr");
     var td = document.createElement("td");
-    for (y = 0; y < 8; ++y) {
+    for (y = 1; y <= 8; ++y) {
         var tr = document.createElement("tr");
 
-        for (x = 0; x < 8; ++x) {
+        for (x = 1; x <= 8; ++x) {
             var td = document.createElement("td");
             td.style.width = 70 + "px";
             td.style.height = 70 + "px";
@@ -87,7 +105,7 @@ function set_drag(){
         start:function(ev, ui){
             var img = ui.helper.context;
             var p = new pieces();
-            var position = new Position($(img).parent().attr("id")[0],$(img).parent().attr("id")[0]);
+            var position = new Position($(img).parent().attr("id")[0],$(img).parent().attr("id")[1]);
             p = get_Pieces(img);
             get_moves(p,position);
         }
