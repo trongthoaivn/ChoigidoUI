@@ -5,10 +5,10 @@ class pieces{
         this.image = image;
         this. move = move;
     }
+    
 }
 class Position{
-    constructor(pieces,x,y){
-        this.pieces = pieces;
+    constructor(x,y){
         this.x = x;
         this.y = y;
     }
