@@ -72,6 +72,25 @@ function get_moves(img, position){
     }
     if(img.name == "K"){
         console.log("WK:"+position.x+position.y)
+        var default_position = new Array();
+        //default accept_position
+        default_position.push(
+            new Position(x+1,y+1), 
+            new Position(x-1,y-1),
+            new Position(x-1,y+1), 
+            new Position(x+1,y-1),
+            new Position(x,y-1),
+            new Position(x,y+1),
+            new Position(x+1,y),
+            new Position(x-1,y),
+            );
+        // check accept_position
+        default_position.forEach( e =>{
+            if(check_position(true,e)) 
+                accept_position.push(e);
+        });
+            
+        return accept_position;
     }
     if(img.name == "Q"){
         console.log("WQ:"+position.x+position.y)
