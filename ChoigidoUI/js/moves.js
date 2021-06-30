@@ -1,16 +1,43 @@
+function check_position(category , position){
+
+    //  gán vị trí
+        var x = position.x;
+        var y = position.y;
+    //tìm hình ảnh trong ô
+        var img = $('#'+x+y+'').find('img').attr("class");
+        if(img != undefined){
+           var cate_img = img.split(" ")[0];
+            if(check_category(cate_img) == category)
+                return false;// có hình ảnh và cùng loại
+            else return true;// có hình ảnh và khác loại
+        } else return true;
+}
+
+function check_category(category){
+    if(category !=undefined){
+        if (category == category.toUpperCase()) {
+            return true;
+            //black
+        }
+        if (category == category.toLowerCase()){
+            return false;
+            //white
+        }   
+    }    
+    return undefined;
+}
 
 
-function get_moves( img, position){
+function get_moves(img, position){
 
     var accept_position = new Array();
     var x = Number.parseInt(position.x);
     var y = Number.parseInt(position.y);
     if(img.name == "k"){
         console.log("bk:"+position.x+position.y)
-        
-        
+        var default_position = new Array();
         //default accept_position
-        accept_position.push(
+        default_position.push(
             new Position(x+1,y+1), 
             new Position(x-1,y-1),
             new Position(x-1,y+1), 
@@ -20,13 +47,12 @@ function get_moves( img, position){
             new Position(x+1,y),
             new Position(x-1,y),
             );
-        // trigger block (0,9)
-            for (let i = 0; i < accept_position.length; i++) {
-                var pos = new position("","");
-                pos =accept_position[i];
-                if((accept_position[i].x)>0 && (accept_position[i].x)<9 && (accept_position[i].y)>0 && (accept_position[i].y)<9  ){
-                    accept_position.splice(i, 1);
-            }
+        // check accept_position
+        default_position.forEach( e =>{
+            if(check_position(false,e)) 
+                accept_position.push(e);
+        });
+            
         return accept_position;
     }
     if(img.name == "q"){
@@ -62,6 +88,5 @@ function get_moves( img, position){
     if(img.name == "P"){
         console.log("WP:"+position.x+position.y)
     }
-    }
-    
 }
+    
