@@ -1,5 +1,4 @@
 function check_position(category , position){
-
     //  gán vị trí
         var x = position.x;
         var y = position.y;
@@ -70,6 +69,50 @@ function get_moves(img, position){
     }
     if(img.name == "r"){
         console.log("br:"+position.x+position.y)
+        //default accept_position
+        // 1->x
+        for(let i = x-1 ; i>=1 ; i--){
+            if(check_position(false,new Position(i ,y)) == 3 || check_position(false,new Position(i ,y)) == 1){
+                console.log("vt trước x :"+i+""+y)
+                accept_position.push(new Position(i ,y));
+                console.log(check_position(false,new Position(i ,y)))
+                
+            }
+            if(check_position(false,new Position(i ,y)) == 0 || check_position(false,new Position(i ,y)) == 1)
+                break;
+            
+        }
+        //x->8
+        for(let i = x+1 ; i<=8 ; i++){
+            if(check_position(false,new Position(i ,y)) == 3 || check_position(false,new Position(i ,y)) == 1){
+                console.log("vt sau x :"+i+""+y)
+                accept_position.push(new Position(i ,y));
+                
+            }
+            if(check_position(false,new Position(i ,y)) == 0 || check_position(false,new Position(i ,y)) == 1)
+                break;
+        }
+        //1->y
+        for(let i = y-1 ; i>=1 ; i--){
+            if(check_position(false,new Position(x ,i)) == 3 || check_position(false,new Position(x ,i)) == 1){
+                console.log("vt trước y :"+x+""+i)
+                accept_position.push(new Position(x ,i));
+                
+            }
+            if(check_position(false,new Position(x ,i)) == 0 || check_position(false,new Position(x ,i)) == 1)
+                break;
+        }
+        //y->8
+        for(let i = y+1 ; i<=8 ; i++){
+            if(check_position(false,new Position(x ,i)) == 3 || check_position(false,new Position(x ,i)) == 1){
+                console.log("vt sau y :"+x+""+i)
+                accept_position.push(new Position(x ,i));
+                
+            }
+            if(check_position(false,new Position(x ,i)) == 0 || check_position(false,new Position(x ,i)) == 1)
+                break;
+        }
+        return accept_position;
     }
     if(img.name == "p"){
         console.log("bp:"+position.x+position.y)
@@ -107,6 +150,50 @@ function get_moves(img, position){
     }
     if(img.name == "R"){
         console.log("WR:"+position.x+position.y)
+        //default accept_position
+        // 1->x
+        for(let i = x-1 ; i>=1 ; i--){
+            if(check_position(true,new Position(i ,y)) == 3 || check_position(true,new Position(i ,y)) == 1){
+                console.log("vt trước x :"+i+""+y)
+                accept_position.push(new Position(i ,y));
+                console.log(check_position(false,new Position(i ,y)))
+                
+            }
+            if(check_position(true,new Position(i ,y)) == 0 || check_position(true,new Position(i ,y)) == 1)
+                break;
+            
+        }
+        //x->8
+        for(let i = x+1 ; i<=8 ; i++){
+            if(check_position(true,new Position(i ,y)) == 3 || check_position(true,new Position(i ,y)) == 1){
+                console.log("vt sau x :"+i+""+y)
+                accept_position.push(new Position(i ,y));
+                
+            }
+            if(check_position(true,new Position(i ,y)) == 0 || check_position(true,new Position(i ,y)) == 1)
+                break;
+        }
+        //1->y
+        for(let i = y-1 ; i>=1 ; i--){
+            if(check_position(true,new Position(x ,i)) == 3 || check_position(true,new Position(x ,i)) == 1){
+                console.log("vt trước y :"+x+""+i)
+                accept_position.push(new Position(x ,i));
+                
+            }
+            if(check_position(true,new Position(x ,i)) == 0 || check_position(true,new Position(x ,i)) == 1)
+                break;
+        }
+        //y->8
+        for(let i = y+1 ; i<=8 ; i++){
+            if(check_position(true,new Position(x ,i)) == 3 || check_position(true,new Position(x ,i)) == 1){
+                console.log("vt sau y :"+x+""+i)
+                accept_position.push(new Position(x ,i));
+                
+            }
+            if(check_position(true,new Position(x ,i)) == 0 || check_position(true,new Position(x ,i)) == 1)
+                break;
+        }
+        return accept_position;
     }
     if(img.name == "P"){
         console.log("WP:"+position.x+position.y)
