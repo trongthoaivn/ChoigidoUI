@@ -120,7 +120,7 @@ function set_drag(){
         start:function(ev, ui){
             let img = ui.helper.context;
             let p = new pieces();
-            console.log($(img).parent());
+           // console.log($(img).parent());
             let position = new Position($(img).parent().attr("id")[0],$(img).parent().attr("id")[1]);
             p = get_Pieces(img);
             let accept_position = get_moves(p,position)

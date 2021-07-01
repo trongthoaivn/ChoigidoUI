@@ -5,12 +5,16 @@ function check_position(category , position){
         var y = position.y;
     //tìm hình ảnh trong ô
         var img = $('#'+x+y+'').find('img').attr("class");
-        if(img != undefined){
+        if(img != undefined){ //
            var cate_img = img.split(" ")[0];
             if(check_category(cate_img) == category)
-                return false;// có hình ảnh và cùng loại
-            else return true;// có hình ảnh và khác loại
-        } else return true;
+                return 0;// có hình ảnh và cùng loại
+            else return 1;// có hình ảnh và khác loại
+        } else{
+            if($('#'+x+y+'') == undefined){
+                return 2; //ô nằm ngoài bàn
+            }else return 3; //ô nằm trong bàn
+        };
 }
 
 function check_category(category){
@@ -49,7 +53,7 @@ function get_moves(img, position){
             );
         // check accept_position
         default_position.forEach( e =>{
-            if(check_position(false,e)) 
+            if(check_position(false,e) == 1 ||check_position(false,e) == 3 ) 
                 accept_position.push(e);
         });
             
