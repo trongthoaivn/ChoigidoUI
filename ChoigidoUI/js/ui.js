@@ -133,13 +133,19 @@ function set_drag() {
             accept.forEach(function(items) {
                 console.log(items.x + "" + items.y)
                 if (accept[0].x == 3 && accept[1].x == 4 || accept[0].x == 6 && accept[1].x == 5) {
-                    $("#" + items.x + "" + items.y + "").css({
-                        "border": "5px solid white"
-                    })
-                } else {
                     $("#" + accept[0].x + "" + accept[0].y + "").css({
                         "border": "5px solid white"
                     })
+                } else {
+                    if (($("#" + accept[0].x + "" + accept[0].y + "").find("img").length) > 0) {
+                        $("#" + accept[0].x + "" + accept[0].y + "").css({
+                            "border": "5px solid red"
+                        })
+                    } else {
+                        $("#" + accept[0].x + "" + accept[0].y + "").css({
+                            "border": "5px solid white"
+                        })
+                    }
                     if (($("#" + accept[2].x + "" + accept[2].y + "").find("img").length) > 0) {
                         $("#" + accept[2].x + "" + accept[2].y + "").parent().find("#" + accept[2].x + "" + accept[2].y + "").css({
                             "border": "5px solid yellow"
@@ -206,7 +212,7 @@ function set_drop() {
             switch (name[0]) {
                 case 'p':
                 case 'P':
-                    if (Number(newPoss) == accept[0].x + "" + accept[0].y || Number(newPoss) == accept[1].x + "" + accept[1].y || Number(newPoss) == accept[2].x + "" + accept[2].y || Number(newPoss) == accept[3].x + "" + accept[3].y) {
+                    if (Number(newPoss) == accept[0].x + "" + accept[0].y || Number(newPoss) == accept[2].x + "" + accept[2].y || Number(newPoss) == accept[3].x + "" + accept[3].y) {
                         if ($('td').not('td:empty')) {
                             var flag = true;
                             var className = $(droppedOn).find("img").attr("class");
@@ -231,22 +237,14 @@ function set_drop() {
                                     $(droppedOn).droppable("disable");
                                 }
                             }
+                            if (Number(newPoss) == accept[2].x + "" + accept[2].y && $("#" + accept[2].x + "" + accept[2].y + "").find("img").length == 0 ||
+                                Number(newPoss) == accept[3].x + "" + accept[3].y && $("#" + accept[3].x + "" + accept[3].y + "").find("img").length == 0) {
+                                flag = false;
+                            }
                         }
                         if (newPoss[0] != accept[2].x && newPoss[0] != accept[1].x && newPoss[0] != accept[0].x) {
                             flag = false;
                         }
-
-                        // đoạn dưới check đường chéo từ nước đi 2, vẫn ch dc
-
-                        // if (name[0] == 'p' && accept[2].x != 3 && accept[2].x != accept[0].x || name[0] == 'P' && accept[2].x != 6 && accept[2].x != accept[0].x) {
-                        //     flag = false;
-                        // }
-
-                        // đoạn dưới check nhảy qua đầu, vẫn chưa được
-
-                        // if (name[0] == 'p' && newPoss[0] > accept[1].x + 1 || name[0] == 'P' && newPoss[0] < accept[1].x - 1) {
-                        //     flag = false;
-                        // }
                         if (flag) {
                             $(dropped).parent().droppable("enable");
                             $(dropped).detach().css({
