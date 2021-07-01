@@ -78,6 +78,7 @@ function get_moves(img, position){
                 console.log(check_position(false,new Position(i ,y)))
                 
             }
+            //đụng quân cờ thì dừng for
             if(check_position(false,new Position(i ,y)) == 0 || check_position(false,new Position(i ,y)) == 1)
                 break;
             
@@ -89,6 +90,7 @@ function get_moves(img, position){
                 accept_position.push(new Position(i ,y));
                 
             }
+            //đụng quân cờ thì dừng for
             if(check_position(false,new Position(i ,y)) == 0 || check_position(false,new Position(i ,y)) == 1)
                 break;
         }
@@ -99,6 +101,7 @@ function get_moves(img, position){
                 accept_position.push(new Position(x ,i));
                 
             }
+            //đụng quân cờ thì dừng for
             if(check_position(false,new Position(x ,i)) == 0 || check_position(false,new Position(x ,i)) == 1)
                 break;
         }
@@ -109,6 +112,7 @@ function get_moves(img, position){
                 accept_position.push(new Position(x ,i));
                 
             }
+            //đụng quân cờ thì dừng for
             if(check_position(false,new Position(x ,i)) == 0 || check_position(false,new Position(x ,i)) == 1)
                 break;
         }
@@ -159,6 +163,7 @@ function get_moves(img, position){
                 console.log(check_position(false,new Position(i ,y)))
                 
             }
+            //đụng quân cờ thì dừng for
             if(check_position(true,new Position(i ,y)) == 0 || check_position(true,new Position(i ,y)) == 1)
                 break;
             
@@ -170,6 +175,7 @@ function get_moves(img, position){
                 accept_position.push(new Position(i ,y));
                 
             }
+            //đụng quân cờ thì dừng for
             if(check_position(true,new Position(i ,y)) == 0 || check_position(true,new Position(i ,y)) == 1)
                 break;
         }
@@ -180,6 +186,7 @@ function get_moves(img, position){
                 accept_position.push(new Position(x ,i));
                 
             }
+            //đụng quân cờ thì dừng for
             if(check_position(true,new Position(x ,i)) == 0 || check_position(true,new Position(x ,i)) == 1)
                 break;
         }
@@ -190,6 +197,7 @@ function get_moves(img, position){
                 accept_position.push(new Position(x ,i));
                 
             }
+            //đụng quân cờ thì dừng for
             if(check_position(true,new Position(x ,i)) == 0 || check_position(true,new Position(x ,i)) == 1)
                 break;
         }
