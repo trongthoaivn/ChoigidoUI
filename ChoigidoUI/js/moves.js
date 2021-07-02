@@ -63,9 +63,31 @@ function get_moves(img, position){
     }
     if(img.name == "b"){
         console.log("bb:"+position.x+position.y)
+
+
     }
     if(img.name == "n"){
         console.log("bn:"+position.x+position.y)
+        var default_position = new Array();
+        //default accept_position
+        default_position.push(
+            new Position(x+2,y+1),
+            new Position(x+2,y-1),
+            new Position(x-2,y+1),
+            new Position(x-2,y-1),
+            new Position(x+1,y+2),
+            new Position(x-1,y+2),
+            new Position(x+1,y-2),
+            new Position(x-1,y-2),
+        );
+          // check accept_position
+          default_position.forEach( e =>{
+            if(check_position(false,e) == 1 ||check_position(false,e) == 3 ) 
+                accept_position.push(e);
+        });
+            
+        return accept_position;
+
     }
     if(img.name == "r"){
         console.log("br:"+position.x+position.y)
@@ -180,6 +202,25 @@ function get_moves(img, position){
     }
     if(img.name == "N"){
         console.log("WN:"+position.x+position.y)
+        var default_position = new Array();
+        //default accept_position
+        default_position.push(
+            new Position(x+2,y+1),
+            new Position(x+2,y-1),
+            new Position(x-2,y+1),
+            new Position(x-2,y-1),
+            new Position(x+1,y+2),
+            new Position(x-1,y+2),
+            new Position(x+1,y-2),
+            new Position(x-1,y-2),
+        );
+          // check accept_position
+          default_position.forEach( e =>{
+            if(check_position(true,e) == 1 ||check_position(true,e) == 3 ) 
+                accept_position.push(e);
+        });
+            
+        return accept_position;
     }
     if(img.name == "R"){
         console.log("WR:"+position.x+position.y)

@@ -128,7 +128,8 @@ function set_drag(){
             accept_position.forEach(e =>{
                 let x = e.x;
                 let y = e.y;
-                set_drop(x+""+y);                 
+                set_drop(x+""+y);    
+                $('#'+x+""+y+'').css({"border": "3px solid yellow"});           
             });
         }
     });
@@ -146,7 +147,7 @@ function set_drop(id){
             $("td").droppable({
                 disabled: true
             });
-            
+            $("td").css({"border" :""});
         }
         
     });
