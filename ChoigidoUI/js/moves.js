@@ -116,6 +116,35 @@ function get_moves(img, position){
     }
     if(img.name == "p"){
         console.log("bp:"+position.x+position.y)
+        var default_position = new Array();
+        //default accept_position
+        if(x == 2){
+            default_position.push(
+            new Position(x+2,y),
+            new Position(x+1,y)
+            );
+        } else
+        default_position.push(new Position(x+1,y))
+        // block thẳng
+        default_position.forEach( e =>{
+            if(check_position(false,e) == 3){
+                accept_position.push(e);
+            }
+        });
+        default_position = [];
+        default_position.push(
+            new Position(x+1,y+1),
+            new Position(x+1,y-1)
+        );
+        // ăn xéo
+        default_position.forEach( e =>{
+            console.log (check_position(false,e))
+            if(check_position(false,e) == 1){
+                accept_position.push(e);
+            }
+        });
+        return accept_position;
+
     }
     if(img.name == "K"){
         console.log("WK:"+position.x+position.y)
@@ -197,6 +226,34 @@ function get_moves(img, position){
     }
     if(img.name == "P"){
         console.log("WP:"+position.x+position.y)
+        var default_position = new Array();
+        //default accept_position
+        if(x == 7){
+            default_position.push(
+            new Position(x-2,y),
+            new Position(x-1,y)
+            );
+        } else
+        default_position.push(new Position(x-1,y))
+        // block thẳng
+        default_position.forEach( e =>{
+            if(check_position(true,e) == 3){
+                accept_position.push(e);
+            }
+        });
+        default_position = [];
+        default_position.push(
+            new Position(x-1,y+1),
+            new Position(x-1,y-1)
+        );
+        // ăn xéo
+        default_position.forEach( e =>{
+            if(check_position(true,e) == 1){
+                accept_position.push(e);
+            }
+        });
+        return accept_position;
+
     }
 }
     
