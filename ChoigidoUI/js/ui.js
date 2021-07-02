@@ -131,6 +131,12 @@ function set_drag(){
                 set_drop(x+""+y);    
                 $('#'+x+""+y+'').css({"border": "3px solid yellow"});           
             });
+        },
+        stop:function(ev, ui){
+            $("td").droppable({
+                disabled: true
+            });
+            $("td").css({"border" :""});
         }
     });
 }
